@@ -260,6 +260,7 @@ function renderHomepage() {
       return `
       <a class="cat-card" href="${c.page}">
         <div class="cat-card-inner">
+          ${c.image ? `<img src="${c.image}" alt="${c.name}" class="cat-card-img">` : ""}
           <h3>${c.name}</h3>
           <p>${c.tagline}</p>
           <div class="cat-card-footer">
