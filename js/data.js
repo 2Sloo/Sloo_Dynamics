@@ -27,6 +27,16 @@ const SITE = {
   // the text-based "2SLOO" wordmark everywhere.
   logoImage: "assets/logo.png",
 
+  // Optional background image for the homepage hero (the big "2SLOO"
+  // section at the top). Add your image to /assets, then set the path
+  // here, e.g. "assets/hero-bg.jpg". Leave as "" for no image — the
+  // hero will just use the plain dark background like today.
+  // A wide, high-contrast automotive/track photo works best. The site
+  // automatically dims it and adds a dark gradient behind the text so
+  // everything stays readable — you don't need to darken the image
+  // yourself.
+  heroBackground: "",
+
   // Social links. Replace the placeholder strings with your real URLs.
   // Leave a value as "" (empty string) to hide that link from the site.
   social: {
@@ -267,18 +277,13 @@ const RELEASES = [
    
    
    // THIS IS WHERE THE ACTUAL RELEASES START. ALL ABOVE ARE EXAMPLES AND TEMPLATES DO NOT REMOVE THEM pretty please
-
-
-
-
-   
 {
     id: "2Sloo EVP Beamng Graphics Pack",
-    title: "2Sloo EVP Beamng Graphics Pack",
+    title: "2Sloo Graphics Pack",
     category: "graphics",
     game: "beamng",
     version: "1.0",
-    date: "2026-12-08",
+    date: "2026-07-01",
     dateDisplay: "August 2026",
     featured: true,
     placeholder: false,

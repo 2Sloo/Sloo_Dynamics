@@ -287,11 +287,20 @@ function releaseCardHtml(release) {
 function emptyStateHtml(message) {
   return `<div class="empty-state"><p>${message}</p></div>`;
 }
+function releaseCountHtml(count) {
+  const cls = count > 0 ? "release-count has-releases" : "release-count";
+  return `<span class="${cls}">${count} release${count === 1 ? "" : "s"}</span>`;
+}
 
 /* ------------------------------ homepage ---------------------------------- */
 
 function renderHomepage() {
   const catMount = qs("#category-grid");
+  const heroBg = qs("#hero-bg");
+
+  if (heroBg && SITE.heroBackground) {
+    heroBg.style.backgroundImage = `url('${SITE.heroBackground}')`;
+  }
 
   if (catMount) {
     catMount.innerHTML = CATEGORIES.map((c) => {
@@ -303,7 +312,7 @@ function renderHomepage() {
           <h3>${c.name}</h3>
           <p>${c.tagline}</p>
           <div class="cat-card-footer">
-            <span class="release-count">${count} release${count === 1 ? "" : "s"}</span>
+            ${releaseCountHtml(count)}
             <span class="cat-card-link">Browse ${c.shortName} &rarr;</span>
           </div>
         </div>
@@ -332,7 +341,7 @@ function renderCategoryPage(categoryId) {
           <h3>${g.name}</h3>
           <p>${cat.tagline}</p>
           <div class="game-card-footer">
-            <span class="release-count">${count} release${count === 1 ? "" : "s"}</span>
+            ${releaseCountHtml(count)}
             <span class="btn btn-outline btn-sm">View Settings</span>
           </div>
         </a>
@@ -624,16 +633,21 @@ function renderChangelogPage() {
         const game = gameById(release.game);
         return `
         <article class="changelog-entry">
-          <div class="changelog-meta">
-            <span class="v-tag">v${entry.version}</span>
-            <span class="v-date">${entry.date}</span>
+          <a href="release.html?id=${release.id}" class="changelog-thumb-link" aria-hidden="true" tabindex="-1">
+            <img src="${release.thumbnail}" alt="" loading="lazy" class="changelog-thumb">
+          </a>
+          <div class="changelog-body">
+            <div class="changelog-meta">
+              <span class="v-tag">v${entry.version}</span>
+              <span class="v-date">${entry.date}</span>
+            </div>
+            <h3><a href="release.html?id=${release.id}">${release.title}</a></h3>
+            <div class="card-tags">
+              <span class="tag tag-cat">${cat ? cat.name : release.category}</span>
+              <span class="tag tag-game">${game ? game.name : release.game}</span>
+            </div>
+            <ul>${entry.notes.map((n) => `<li>${n}</li>`).join("")}</ul>
           </div>
-          <h3><a href="release.html?id=${release.id}">${release.title}</a></h3>
-          <div class="card-tags">
-            <span class="tag tag-cat">${cat ? cat.name : release.category}</span>
-            <span class="tag tag-game">${game ? game.name : release.game}</span>
-          </div>
-          <ul>${entry.notes.map((n) => `<li>${n}</li>`).join("")}</ul>
         </article>
       `;
       })
