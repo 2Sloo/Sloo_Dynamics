@@ -50,7 +50,7 @@ const SITE = {
   pageBackgrounds: {
     home: "",
     "all-settings": "",
-    changelog: "",
+    changelog: "assets/logo.png",
     about: "",
     ffb: "assets/backgrounds/ffbbackground.jpg",
     graphics: "assets/backgrounds/graphicsbackground.jpg",
