@@ -332,6 +332,11 @@ function renderCategoryPage(categoryId) {
   qs("#category-description").textContent = cat.description;
   document.title = `${cat.name} — ${SITE.brand}`;
 
+  const heroBg = qs("#category-hero-bg");
+  if (heroBg && cat.image) {
+    heroBg.style.backgroundImage = `url('${cat.image}')`;
+  }
+
   const grid = qs("#game-grid");
   if (grid) {
     grid.innerHTML = GAMES.map((g) => {
