@@ -330,7 +330,7 @@ const RELEASES = [
     dateDisplay: "August 2026",
     featured: true,
     placeholder: true,
-    thumbnail: "assets/thumbs/ffb.svg",
+    thumbnail: "assets/releasethumbs/MasterSetFFB.jpg",
     shortDescription: "All around ffb preset for Beamng Drive",
     description:
       "This is an all around ffb preset for Beamng Drive. Its AMAZING for drifting and racing. It feels good with off-roading, however, I don't know what off-roading feels like in real life, so I can't be accurate with it.",
@@ -346,7 +346,7 @@ const RELEASES = [
     },
     videos: {
       tutorial: "",
-      showcase: "",
+      showcase: "https://youtu.be/VtHM2b1mVHs",
     },
     changelog: [
       {
