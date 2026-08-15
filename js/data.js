@@ -25,7 +25,7 @@ const SITE = {
   // Replace with a path to your own logo (e.g. "assets/logo.png") to
   // switch from text branding to an image logo. Leave as null to use
   // the text-based "2SLOO" wordmark everywhere.
-  logoImage: "assets/logo.png",
+  logoImage: "",
 
   // Optional background image for the homepage hero (the big "2SLOO"
   // section at the top). Add your image to /assets, then set the path
