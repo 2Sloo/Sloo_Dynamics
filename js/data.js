@@ -37,6 +37,29 @@ const SITE = {
   // yourself.
   heroBackground: "assets/hero-bg.jpg",
 
+  // Optional background image PER PAGE — this replaces the old grey
+  // diagonal-line texture. Add an image to /assets, then set its path
+  // for any page below. Leave a value as "" to keep that page plain.
+  // The image shows through in the open space around cards/panels (this
+  // is most visible on pages with fewer big panels, like Changelog and
+  // About) with a dark gradient automatically layered on top so text
+  // stays readable — you don't need to darken the image yourself.
+  // Keys: home, all-settings, changelog, about, and one per category
+  // (ffb, graphics, vehicle-setups, other). game.html and release.html
+  // share the "game" and "release" keys across every combination.
+  pageBackgrounds: {
+    home: "",
+    "all-settings": "",
+    changelog: "",
+    about: "",
+    ffb: "",
+    graphics: "",
+    "vehicle-setups": "",
+    other: "",
+    game: "",
+    release: "",
+  },
+
   // Social links. Replace the placeholder strings with your real URLs.
   // Leave a value as "" (empty string) to hide that link from the site.
   social: {

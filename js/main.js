@@ -81,13 +81,29 @@ function sortSelectHtml(id, current) {
 
 /* ------------------------------- header --------------------------------- */
 
+const SOCIAL_ICONS = {
+  youtube: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="5" width="20" height="14" rx="4" stroke="currentColor" stroke-width="1.6"/><path d="M10 9l6 3-6 3V9z" fill="currentColor"/></svg>`,
+  discord: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 8.5c3-1.3 7-1.3 10 0M6 9.5c-1 2.7-1.3 5-1 7 1.8 1.3 3.6 2 3.6 2l.8-1.4M18 9.5c1 2.7 1.3 5 1 7-1.8 1.3-3.6 2-3.6 2l-.8-1.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/><circle cx="9" cy="13.5" r="1.2" fill="currentColor"/><circle cx="15" cy="13.5" r="1.2" fill="currentColor"/></svg>`,
+  tiktok: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 4v10.2a3.2 3.2 0 1 1-2.4-3.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M14 4c.3 2.4 2 4.2 4.4 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`,
+  instagram: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg>`,
+};
+
+function brandWordmarkHtml(brand) {
+  const m = brand.match(/^([0-9]*)([A-Za-z].*)$/);
+  if (!m) return `<span class="brand-mark">${brand}</span>`;
+  const [, prefix, rest] = m;
+  return `<span class="brand-mark">${
+    prefix ? `<span class="brand-prefix">${prefix}</span>` : ""
+  }<span class="brand-suffix">${rest}</span></span>`;
+}
+
 function renderHeader(activePage) {
   const mount = qs("#site-header");
   if (!mount) return;
 
-  const brandMark = SITE.logoImage
+  const brandInner = SITE.logoImage
     ? `<img src="${SITE.logoImage}" alt="${SITE.brand}" class="brand-logo-img">`
-    : `<span class="brand-mark">${SITE.brand}</span>`;
+    : brandWordmarkHtml(SITE.brand);
 
   const links = [
     { href: "index.html", label: "Home", key: "home" },
@@ -99,10 +115,20 @@ function renderHeader(activePage) {
     { href: "about.html", label: "About", key: "about" },
   ];
 
+  const socialIconLinks = Object.entries(SITE.social)
+    .filter(([, url]) => url && !url.startsWith("YOUR_"))
+    .map(([key, url]) => {
+      const label = key[0].toUpperCase() + key.slice(1);
+      const icon = SOCIAL_ICONS[key] || "";
+      return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="nav-social-link" aria-label="${SITE.brand} on ${label}">${icon}</a>`;
+    })
+    .join("");
+
   mount.innerHTML = `
     <div class="nav-inner">
       <a href="index.html" class="brand" aria-label="${SITE.brand} home">
-        ${brandMark}
+        ${brandInner}
+        ${SITE.tagline ? `<span class="brand-tagline">${SITE.tagline}</span>` : ""}
       </a>
       <nav class="main-nav" aria-label="Primary">
         <ul>
@@ -114,7 +140,7 @@ function renderHeader(activePage) {
         </ul>
       </nav>
       <div class="nav-actions">
-        <a href="all-settings.html" class="btn btn-accent btn-sm">Explore</a>
+        ${socialIconLinks ? `<div class="nav-social">${socialIconLinks}</div>` : ""}
         <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
@@ -682,13 +708,24 @@ function renderAboutSocial() {
 
 /* ---------------------------------- init ------------------------------------------ */
 
+function applyPageBackground(page, categoryId) {
+  const key = page === "category" ? categoryId : page;
+  const url = SITE.pageBackgrounds && SITE.pageBackgrounds[key];
+  if (url) {
+    document.body.style.setProperty("--page-bg-image", `url('${url}')`);
+    document.body.classList.add("has-page-bg");
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const page = document.body.getAttribute("data-page") || "";
+  const categoryId = document.body.getAttribute("data-category") || "";
+  applyPageBackground(page, categoryId);
   renderHeader(page);
   renderFooter();
 
   if (page === "home") renderHomepage();
-  if (page === "category") renderCategoryPage(document.body.getAttribute("data-category"));
+  if (page === "category") renderCategoryPage(categoryId);
   if (page === "game") renderGamePage();
   if (page === "release") renderReleasePage();
   if (page === "all-settings") renderAllSettingsPage();
