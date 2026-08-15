@@ -400,7 +400,7 @@ const RELEASES = [
     recommendedFor: ["Moza R3", "Moza R5", "Moza R9", "Other direct-drive wheels"],
     installation:
       "1. Download the pack from ModsFire.\n2. Extract the .zip to a folder you can find again.\n3. View the HowToUse.txt file for next steps.",
-    tags: ["ffb", "force feedback", "assettocorsa", "drift", "moza"],
+    tags: ["ffb", "force feedback", "assetto corsa", "drift", "moza"],
     links: {
       modsfire: "https://modsfire.com/6DbxOGYrprR5bzM",
       mediafire: "#",
