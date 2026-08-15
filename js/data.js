@@ -122,7 +122,7 @@ const RELEASES = [
     version: "1.0",
     date: "2026-08-01",
     dateDisplay: "August 2026",
-    featured: true,
+    featured: false,
     placeholder: true,
     thumbnail: "assets/thumbs/ffb.svg",
     shortDescription: "Force-feedback settings tuned for different driving styles.",
@@ -230,8 +230,11 @@ const RELEASES = [
       { version: "1.0", date: "August 2026", notes: ["Initial release"] },
     ],
   },
-];
-// THIS IS WHERE THE ACTUAL RELEASES START. ALL ABOVE ARE EXAMPLES AND TEMPLATES DO NOT REMOVE THEM pretty please
+
+   
+   
+   
+   // THIS IS WHERE THE ACTUAL RELEASES START. ALL ABOVE ARE EXAMPLES AND TEMPLATES DO NOT REMOVE THEM pretty please
 {
     id: "2Sloo EVP Beamng Graphics Pack",
     title: "2Sloo Graphics Pack",
@@ -241,7 +244,7 @@ const RELEASES = [
     date: "2026-07-01",
     dateDisplay: "August 2026",
     featured: true,
-    placeholder: true,
+    placeholder: false,
     thumbnail: "assets/releasethumbs/EVP_ Beamng.png",
     shortDescription: "My first graphics pack for Beamng. 0.39 made me want to play the game more, therefor, I made a graphics pack!",
     description:
@@ -264,7 +267,7 @@ const RELEASES = [
       },
     ],
   },
-
+];
 /* --------------------------------------------------------------------
    GAMES PLANNED FOR THE FUTURE (not shown in navigation yet)
    Kept here so the data structure is ready when you decide to add them.
