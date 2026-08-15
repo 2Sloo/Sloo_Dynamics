@@ -41,6 +41,39 @@ function releasesFor(categoryId, gameId) {
   }).sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
+const SORT_OPTIONS = [
+  { id: "newest", label: "Newest" },
+  { id: "oldest", label: "Oldest" },
+  { id: "name-asc", label: "Name (A\u2013Z)" },
+  { id: "name-desc", label: "Name (Z\u2013A)" },
+];
+
+function sortReleases(list, sortId) {
+  const sorted = [...list];
+  switch (sortId) {
+    case "oldest":
+      return sorted.sort((a, b) => new Date(a.date) - new Date(b.date));
+    case "name-asc":
+      return sorted.sort((a, b) => a.title.localeCompare(b.title));
+    case "name-desc":
+      return sorted.sort((a, b) => b.title.localeCompare(a.title));
+    case "newest":
+    default:
+      return sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
+  }
+}
+
+function sortSelectHtml(id, current) {
+  return `
+    <label class="sort-control" for="${id}">
+      <span>Sort</span>
+      <select id="${id}">
+        ${SORT_OPTIONS.map((o) => `<option value="${o.id}" ${o.id === current ? "selected" : ""}>${o.label}</option>`).join("")}
+      </select>
+    </label>
+  `;
+}
+
 /* ------------------------------- header --------------------------------- */
 
 function renderHeader(activePage) {
@@ -219,51 +252,23 @@ function emptyStateHtml(message) {
 /* ------------------------------ homepage ---------------------------------- */
 
 function renderHomepage() {
-  const featuredMount = qs("#featured-release");
-  const latestMount = qs("#latest-releases");
   const catMount = qs("#category-grid");
 
   if (catMount) {
-    catMount.innerHTML = CATEGORIES.map(
-      (c) => `
+    catMount.innerHTML = CATEGORIES.map((c) => {
+      const count = releasesFor(c.id, "all").length;
+      return `
       <a class="cat-card" href="${c.page}">
         <div class="cat-card-inner">
           <h3>${c.name}</h3>
           <p>${c.tagline}</p>
-          <span class="cat-card-link">Browse ${c.shortName} &rarr;</span>
+          <div class="cat-card-footer">
+            <span class="release-count">${count} release${count === 1 ? "" : "s"}</span>
+            <span class="cat-card-link">Browse ${c.shortName} &rarr;</span>
+          </div>
         </div>
-      </a>`
-    ).join("");
-  }
-
-  const featured = RELEASES.find((r) => r.featured) || RELEASES[0];
-  if (featuredMount && featured) {
-    const cat = categoryById(featured.category);
-    const game = gameById(featured.game);
-    featuredMount.innerHTML = `
-      <div class="featured-media">
-        <img src="${featured.thumbnail}" alt="" loading="lazy">
-      </div>
-      <div class="featured-body">
-        <span class="eyebrow">Featured Release</span>
-        <h3>${featured.title}</h3>
-        <div class="card-tags">
-          <span class="tag tag-cat">${cat ? cat.name : featured.category}</span>
-          <span class="tag tag-game">${game ? game.name : featured.game}</span>
-        </div>
-        <p>${featured.shortDescription}</p>
-        <dl class="meta-grid">
-          <div><dt>Version</dt><dd>${featured.version}</dd></div>
-          <div><dt>Released</dt><dd>${featured.dateDisplay}</dd></div>
-        </dl>
-        <a href="release.html?id=${featured.id}" class="btn btn-accent">Download</a>
-      </div>
-    `;
-  }
-
-  if (latestMount) {
-    const latest = [...RELEASES].sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
-    latestMount.innerHTML = latest.map(releaseCardHtml).join("") || emptyStateHtml("No releases yet — check back soon.");
+      </a>`;
+    }).join("");
   }
 }
 
@@ -308,10 +313,13 @@ function renderGamePage() {
   const titleCat = qs("#game-category");
   const crumbCat = qs("#crumb-category");
   const grid = qs("#release-grid");
+  const sortMount = qs("#sort-control");
+  const resultCount = qs("#game-result-count");
 
   if (!cat || !game) {
     if (titleGame) titleGame.textContent = "Not found";
     if (grid) grid.innerHTML = emptyStateHtml("That combination doesn't exist. Try browsing from a category page instead.");
+    if (sortMount) sortMount.innerHTML = "";
     return;
   }
 
@@ -325,12 +333,30 @@ function renderGamePage() {
   const crumbGameTitle = qs("#game-title-crumb");
   if (crumbGameTitle) crumbGameTitle.textContent = game.name;
 
-  const list = releasesFor(cat.id, game.id);
-  if (grid) {
-    grid.innerHTML =
-      list.map(releaseCardHtml).join("") ||
-      emptyStateHtml(`No ${cat.name} releases for ${game.name} yet — check back soon, or browse other games.`);
+  const baseList = releasesFor(cat.id, game.id);
+  let sortId = "newest";
+
+  function draw() {
+    const list = sortReleases(baseList, sortId);
+    if (grid) {
+      grid.innerHTML =
+        list.map(releaseCardHtml).join("") ||
+        emptyStateHtml(`No ${cat.name} releases for ${game.name} yet — check back soon, or browse other games.`);
+    }
+    if (resultCount) resultCount.textContent = `${list.length} release${list.length === 1 ? "" : "s"}`;
   }
+
+  if (sortMount && baseList.length) {
+    sortMount.innerHTML = sortSelectHtml("game-sort", sortId);
+    qs("#game-sort", sortMount).addEventListener("change", (e) => {
+      sortId = e.target.value;
+      draw();
+    });
+  } else if (sortMount) {
+    sortMount.innerHTML = "";
+  }
+
+  draw();
 }
 
 /* ----------------------------- release page ---------------------------------- */
@@ -447,13 +473,23 @@ function renderAllSettingsPage() {
   const gameFilterMount = qs("#filter-game");
   const searchInput = qs("#search-input");
   const resultCount = qs("#result-count");
+  const sortMount = qs("#sort-control");
   if (!grid) return;
 
   let state = {
     category: getParam("category") || "all",
     game: getParam("game") || "all",
     q: "",
+    sort: "newest",
   };
+
+  if (sortMount) {
+    sortMount.innerHTML = sortSelectHtml("all-sort", state.sort);
+    qs("#all-sort", sortMount).addEventListener("change", (e) => {
+      state.sort = e.target.value;
+      renderResults();
+    });
+  }
 
   function buildFilterButtons(mount, items, key) {
     const all = [{ id: "all", name: "All", shortName: "All" }, ...items];
@@ -491,7 +527,8 @@ function renderAllSettingsPage() {
   }
 
   function renderResults() {
-    const list = releasesFor(state.category, state.game).filter((r) => matchesSearch(r, state.q));
+    const filtered = releasesFor(state.category, state.game).filter((r) => matchesSearch(r, state.q));
+    const list = sortReleases(filtered, state.sort);
     grid.innerHTML = list.map(releaseCardHtml).join("") || emptyStateHtml("Nothing matches those filters yet. Try clearing a filter or searching a different term.");
     if (resultCount) resultCount.textContent = `${list.length} result${list.length === 1 ? "" : "s"}`;
   }
