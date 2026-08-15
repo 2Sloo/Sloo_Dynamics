@@ -352,7 +352,7 @@ const RELEASES = [
       {
         version: "1.0",
         date: "August 2026",
-        notes: ["Initial release", "Drift, street, racing, and universal profiles included"],
+        notes: ["Initial release"],
       },
     ],
   },
