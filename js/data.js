@@ -35,7 +35,7 @@ const SITE = {
   // automatically dims it and adds a dark gradient behind the text so
   // everything stays readable — you don't need to darken the image
   // yourself.
-  heroBackground: "",
+  heroBackground: "assets/hero-bg.jpg",
 
   // Social links. Replace the placeholder strings with your real URLs.
   // Leave a value as "" (empty string) to hide that link from the site.
