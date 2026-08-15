@@ -651,7 +651,7 @@ p { margin: 0 0 1em; color: var(--text-dim); }
   padding: 24px;
   margin-bottom: 20px;
 }
-.dl-primary { width: 100%; justify-content: space-between; }
+.dl-primary { width: 100%; justify-content: space-between; padding-right: 1.5rem !important; white-space: nowrap; }
 .dl-primary em { font-style: normal; font-size: 11px; opacity: 0.75; }
 .dl-pending { font-size: 12px; color: var(--hazard); margin: 8px 0 0; }
 .dl-support { font-size: 13px; margin: 12px 0 18px; padding: 12px; background: rgba(79,209,255,0.06); border: 1px solid var(--accent-dim); border-radius: var(--radius); color: var(--text-dim); }
@@ -659,6 +659,7 @@ p { margin: 0 0 1em; color: var(--text-dim); }
 .external-note { display: block; margin-top: 14px; font-size: 12px; color: var(--text-faint); text-align: center; }
 
 .tag-cloud { display: flex; flex-wrap: wrap; gap: 6px; }
+
 
 /* ---------------------------------- changelog ---------------------------------- */
 
