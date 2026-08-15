@@ -329,7 +329,7 @@ const RELEASES = [
     date: "2026-15-08",
     dateDisplay: "August 2026",
     featured: true,
-    placeholder: true,
+    placeholder: false,
     thumbnail: "assets/releasethumbs/MasterSetFFB.jpg",
     shortDescription: "All around ffb preset for Beamng Drive",
     description:
