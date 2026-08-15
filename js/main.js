@@ -206,15 +206,15 @@ function downloadButtonsHtml(links) {
         <span>Download from ModsFire</span>
         <em>Primary</em>
       </a>
-      ${!hasModsfire ? '<p class="dl-pending">Coming soon — link not added yet.</p>' : ""}
+      ${!hasModsfire ? '<p class="dl-pending">Unavailable — link not added yet.</p>' : ""}
       <p class="dl-support">Help support 2Sloo — downloading through ModsFire helps fund future releases. All settings are and always will be free.</p>
 
       <div class="dl-mirrors">
         <a class="btn btn-outline btn-sm" ${hasMediafire ? `href="${links.mediafire}" target="_blank" rel="noopener noreferrer"` : `aria-disabled="true" tabindex="-1"`}>
-          Download from MediaFire ${hasMediafire ? "" : "(coming soon)"}
+          Download from MediaFire ${hasMediafire ? "" : "(unavailable)"}
         </a>
         <a class="btn btn-outline btn-sm" ${hasGdrive ? `href="${links.googledrive}" target="_blank" rel="noopener noreferrer"` : `aria-disabled="true" tabindex="-1"`}>
-          Download from Google Drive ${hasGdrive ? "" : "(coming soon)"}
+          Download from Google Drive ${hasGdrive ? "" : "(unavailable)"}
         </a>
       </div>
       ${externalLinkNote()}
