@@ -51,6 +51,7 @@ const CATEGORIES = [
     id: "ffb",
     name: "FFB Settings",
     shortName: "FFB",
+     image: "images/ffb.jpg",
     tagline: "Force-feedback presets and wheel settings.",
     description:
       "Force-feedback presets tuned for drift, street, and racing driving styles.",
@@ -60,6 +61,7 @@ const CATEGORIES = [
     id: "graphics",
     name: "Graphics",
     shortName: "Graphics",
+     image: "images/graphics.jpg",
     tagline: "Visual settings, ReShade presets, and optimization configs.",
     description:
       "Graphics presets, ReShade profiles, and performance configs.",
@@ -69,6 +71,7 @@ const CATEGORIES = [
     id: "vehicle-setups",
     name: "Vehicle Setups",
     shortName: "Setups",
+     image: "images/graphics.jpg",
     tagline: "Tuning files for grip, drift, and track driving.",
     description:
       "Suspension, alignment, and gearing setups for grip, drift, and track driving.",
@@ -78,6 +81,7 @@ const CATEGORIES = [
     id: "other",
     name: "Other",
     shortName: "Other",
+     image: "images/graphics.jpg",
     tagline: "Camera settings, guides, tools, and whatever else I may add.",
     description:
       "Everything else that doesn't fit neatly anywhere else.",
