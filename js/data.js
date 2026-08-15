@@ -231,6 +231,39 @@ const RELEASES = [
     ],
   },
 ];
+// THIS IS WHERE THE ACTUAL RELEASES START. ALL ABOVE ARE EXAMPLES AND TEMPLATES DO NOT REMOVE THEM pretty please
+{
+    id: "2Sloo EVP Beamng Graphics Pack",
+    title: "2Sloo Graphics Pack",
+    category: "graphics",
+    game: "beamng",
+    version: "1.0",
+    date: "2026-07-01",
+    dateDisplay: "August 2026",
+    featured: true,
+    placeholder: true,
+    thumbnail: "assets/releasethumbs/EVP_ Beamng.png",
+    shortDescription: "My first graphics pack for Beamng. 0.39 made me want to play the game more, therefor, I made a graphics pack!",
+    description:
+      "My first ever graphics pack for Beamng. It is a simple yet effective one consisting of a light reshade preset, in-game settings, and a TAA Mod.",
+    whatsIncluded: ["In-game graphics config", "ReShade preset", "Performance-friendly variant"],
+    recommendedFor: ["Mid-range and high-end GPUs", "1080p–1440p displays"],
+    installation:
+      "Watch this video to learn how to install: https://youtu.be/j4G5CuLFtag?si=GdUZVvysNtzli_OJ",
+    tags: ["graphics", "reshade", "visuals", "Beamng", "Beamng Drive"],
+    links: {
+      modsfire: "https://modsfire.com/sCLE0MZ8u277Kva",
+      mediafire: "https://www.mediafire.com/file/f5538mqy5ghnauj/2Sloo_Beamng_EVP.zip/file",
+      googledrive: "#",
+    },
+    changelog: [
+      {
+        version: "1.0",
+        date: "August 2026",
+        notes: ["Initial Release"],
+      },
+    ],
+  },
 
 /* --------------------------------------------------------------------
    GAMES PLANNED FOR THE FUTURE (not shown in navigation yet)
