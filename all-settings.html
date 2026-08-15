@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Settings — 2SLOO</title>
+  <meta name="description" content="Every 2Sloo release in one place — filter by category and game, or search by name, tag, or driving style.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="all-settings">
+
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumbs"><a href="index.html">Home</a><span>/</span><span>All Settings</span></div>
+        <h1>All Settings</h1>
+        <p class="tagline">Every category, every game, in one searchable library.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="filter-bar">
+          <div class="filter-row">
+            <span class="filter-label">Category</span>
+            <div id="filter-category"></div>
+          </div>
+          <div class="filter-row">
+            <span class="filter-label">Game</span>
+            <div id="filter-game"></div>
+          </div>
+          <div class="search-row">
+            <input type="search" id="search-input" placeholder="Search releases — try &quot;drift&quot;, &quot;BeamNG&quot;, or &quot;GT3&quot;&hellip;" aria-label="Search settings">
+            <span id="result-count"></span>
+          </div>
+        </div>
+
+        <div class="release-grid" id="all-release-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

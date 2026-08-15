@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Releases — 2SLOO</title>
+  <meta name="description" content="Browse 2Sloo settings for a specific game and category.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="game">
+
+  <div id="site-header"></div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a><span>/</span>
+          <a href="all-settings.html" id="crumb-category">Category</a><span>/</span>
+          <span id="game-title-crumb">Game</span>
+        </div>
+        <p class="tagline" id="game-category"></p>
+        <h1 id="game-title">Loading&hellip;</h1>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="release-grid" id="release-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

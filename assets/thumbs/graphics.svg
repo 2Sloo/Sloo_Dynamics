@@ -1,0 +1,9 @@
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg">
+<rect width="640" height="400" fill="#15171b"/>
+<defs><radialGradient id="g" cx="80%" cy="0%" r="80%"><stop offset="0%" stop-color="#4fd1ff" stop-opacity="0.25"/><stop offset="100%" stop-color="#15171b" stop-opacity="0"/></radialGradient></defs>
+<rect width="640" height="400" fill="url(#g)"/>
+<rect x="60" y="60" width="520" height="280" rx="6" fill="none" stroke="#34393f" stroke-width="1"/>
+<polygon points="120,300 260,140 340,220 480,100 560,300" fill="#1a1d22" stroke="#4fd1ff" stroke-width="2"/>
+<circle cx="480" cy="150" r="26" fill="#ffa23d" opacity="0.85"/>
+<text x="32" y="48" font-family="monospace" font-size="20" fill="#7fdfff" letter-spacing="2">GRAPHICS</text>
+</svg>

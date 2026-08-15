@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2SLOO — Sim Racing Settings Hub</title>
+  <meta name="description" content="Free sim-racing FFB settings, graphics presets, and vehicle setups for Assetto Corsa, Assetto Corsa EVO, Assetto Corsa Rally, and BeamNG.drive.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="2SLOO — Sim Racing Settings Hub">
+  <meta property="og:description" content="Free FFB settings, graphics presets, and vehicle setups for Assetto Corsa, AC EVO, AC Rally, and BeamNG.drive.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/thumbs/ffb.svg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="home">
+
+  <div id="site-header"></div>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="tagline">Sim Racing Settings Hub</p>
+        <h1>2SLOO</h1>
+        <p class="lede">Free settings, presets, graphics configurations, force-feedback profiles, and vehicle setups for your favorite racing games. No accounts. No paywalls. Just download and drive.</p>
+        <div class="hero-actions">
+          <a href="all-settings.html" class="btn btn-accent btn-lg" style="width:auto;">Explore Settings</a>
+          <a href="changelog.html" class="btn btn-outline btn-lg" style="width:auto;">Latest Releases</a>
+        </div>
+        <div class="hero-strip">
+          <div class="hero-strip-item"><span class="num">4</span><span class="label">Categories</span></div>
+          <div class="hero-strip-item"><span class="num">4</span><span class="label">Supported Games</span></div>
+          <div class="hero-strip-item"><span class="num">$0</span><span class="label">Cost, Always</span></div>
+          <div class="hero-strip-item"><span class="num">ModsFire</span><span class="label">Primary Host</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Browse by Category</span>
+            <h2>Find your settings</h2>
+          </div>
+        </div>
+        <div class="category-grid" id="category-grid"></div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Featured</span>
+            <h2>Featured release</h2>
+          </div>
+        </div>
+        <div class="featured" id="featured-release"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Fresh off the setup rig</span>
+            <h2>Latest releases</h2>
+          </div>
+          <a href="all-settings.html" class="btn btn-outline btn-sm">View All Settings</a>
+        </div>
+        <div class="release-grid" id="latest-releases"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

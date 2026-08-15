@@ -1,0 +1,1 @@
+Add your real logo here (e.g. logo.png or logo.svg) and set SITE.logoImage in js/data.js

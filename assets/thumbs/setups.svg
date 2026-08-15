@@ -1,0 +1,13 @@
+<svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg">
+<rect width="640" height="400" fill="#15171b"/>
+<defs><radialGradient id="g" cx="80%" cy="0%" r="80%"><stop offset="0%" stop-color="#4fd1ff" stop-opacity="0.25"/><stop offset="100%" stop-color="#15171b" stop-opacity="0"/></radialGradient></defs>
+<rect width="640" height="400" fill="url(#g)"/>
+<circle cx="220" cy="230" r="70" fill="none" stroke="#4fd1ff" stroke-width="3"/>
+<circle cx="220" cy="230" r="30" fill="none" stroke="#4fd1ff" stroke-width="2"/>
+<circle cx="420" cy="230" r="70" fill="none" stroke="#ffa23d" stroke-width="3"/>
+<circle cx="420" cy="230" r="30" fill="none" stroke="#ffa23d" stroke-width="2"/>
+<line x1="220" y1="160" x2="220" y2="130" stroke="#666c76" stroke-width="3"/>
+<line x1="420" y1="160" x2="420" y2="130" stroke="#666c76" stroke-width="3"/>
+<line x1="290" y1="230" x2="350" y2="230" stroke="#34393f" stroke-width="4"/>
+<text x="32" y="48" font-family="monospace" font-size="20" fill="#7fdfff" letter-spacing="2">VEHICLE SETUPS</text>
+</svg>
