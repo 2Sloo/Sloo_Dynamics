@@ -121,6 +121,12 @@ const GAMES = [
      game          - must match a GAMES id above
      links         - leave a URL as "#" until you have the real one.
                      The site will show a disabled "Coming soon" state.
+     videos        - optional. Paste a YouTube link into "tutorial" and/or
+                     "showcase" and it will embed on the release page,
+                     labeled accordingly. Leave either one as "" (empty
+                     string) to skip it entirely — nothing shows, no gap,
+                     no placeholder. Works with youtube.com/watch?v=...,
+                     youtu.be/..., and YouTube Shorts links.
      changelog     - newest entry first
    -------------------------------------------------------------------- */
 const RELEASES = [
@@ -147,6 +153,10 @@ const RELEASES = [
       modsfire: "#",
       mediafire: "#",
       googledrive: "#",
+    },
+    videos: {
+      tutorial: "",
+      showcase: "",
     },
     changelog: [
       {
@@ -180,6 +190,10 @@ const RELEASES = [
       mediafire: "#",
       googledrive: "#",
     },
+    videos: {
+      tutorial: "",
+      showcase: "",
+    },
     changelog: [
       { version: "1.0", date: "August 2026", notes: ["Initial release"] },
     ],
@@ -207,6 +221,10 @@ const RELEASES = [
       modsfire: "#",
       mediafire: "#",
       googledrive: "#",
+    },
+    videos: {
+      tutorial: "",
+      showcase: "",
     },
     changelog: [
       { version: "1.0", date: "August 2026", notes: ["Initial release"] },
@@ -236,6 +254,10 @@ const RELEASES = [
       mediafire: "#",
       googledrive: "#",
     },
+    videos: {
+      tutorial: "",
+      showcase: "",
+    },
     changelog: [
       { version: "1.0", date: "August 2026", notes: ["Initial release"] },
     ],
@@ -262,12 +284,16 @@ const RELEASES = [
     whatsIncluded: ["In-game graphics config", "ReShade preset", "Performance-friendly variant"],
     recommendedFor: ["Mid-range and high-end GPUs", "1080p–1440p displays"],
     installation:
-      "Watch this video to learn how to install: https://youtu.be/j4G5CuLFtag?si=GdUZVvysNtzli_OJ",
+      "Watch the tutorial video above for full install steps.",
     tags: ["graphics", "reshade", "visuals", "Beamng", "Beamng Drive"],
     links: {
       modsfire: "https://modsfire.com/sCLE0MZ8u277Kva",
       mediafire: "https://www.mediafire.com/file/f5538mqy5ghnauj/2Sloo_Beamng_EVP.zip/file",
       googledrive: "#",
+    },
+    videos: {
+      tutorial: "https://youtu.be/j4G5CuLFtag?si=GdUZVvysNtzli_OJ",
+      showcase: "",
     },
     changelog: [
       {

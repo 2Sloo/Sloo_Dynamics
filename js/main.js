@@ -222,6 +222,40 @@ function downloadButtonsHtml(links) {
   `;
 }
 
+function youtubeEmbedUrl(url) {
+  if (!url || typeof url !== "string") return null;
+  const patterns = [
+    /youtu\.be\/([a-zA-Z0-9_-]{6,})/,
+    /youtube\.com\/watch\?v=([a-zA-Z0-9_-]{6,})/,
+    /youtube\.com\/embed\/([a-zA-Z0-9_-]{6,})/,
+    /youtube\.com\/shorts\/([a-zA-Z0-9_-]{6,})/,
+  ];
+  for (const p of patterns) {
+    const m = url.match(p);
+    if (m) return `https://www.youtube-nocookie.com/embed/${m[1]}`;
+  }
+  return null;
+}
+
+function videoEmbedHtml(label, url) {
+  const embed = youtubeEmbedUrl(url);
+  if (!embed) return "";
+  return `
+    <div class="video-embed">
+      <span class="video-label">${label}</span>
+      <div class="video-frame">
+        <iframe
+          src="${embed}"
+          title="${label} video"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  `;
+}
+
 /* ------------------------------ release card ------------------------------ */
 
 function releaseCardHtml(release) {
@@ -413,6 +447,23 @@ function renderReleasePage() {
 
     <div class="release-columns">
       <div class="release-main">
+        ${
+          (() => {
+            const videosHtml = [
+              videoEmbedHtml("Tutorial", release.videos && release.videos.tutorial),
+              videoEmbedHtml("Showcase", release.videos && release.videos.showcase),
+            ]
+              .filter(Boolean)
+              .join("");
+            return videosHtml
+              ? `<section class="release-section">
+                  <h2>Videos</h2>
+                  <div class="video-grid">${videosHtml}</div>
+                </section>`
+              : "";
+          })()
+        }
+
         <section class="release-section">
           <h2>What's Included</h2>
           <ul class="check-list">
