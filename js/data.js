@@ -337,7 +337,7 @@ const RELEASES = [
     whatsIncluded: ["Drift FFB", "Street FFB", "Racing FFB", "Universal FFB"],
     recommendedFor: ["Moza R5", "Moza R9", "Moza", "Other direct-drive and belt-driven wheels"],
     installation:
-      "1. Download the pack from ModsFire (or a mirror below).\n2. Extract the .zip to a folder you can find again.\n3. View How ToUse txt file",
+      "1. Download the pack from ModsFire.\n2. Extract the .zip to a folder you can find again.\n3. View the HowToUse.txt file for next steps.",
     tags: ["ffb", "force feedback", "beamng", "drift", "street", "racing", "moza"],
     links: {
       modsfire: "https://modsfire.com/ZJx5Se19AHe21X9",
