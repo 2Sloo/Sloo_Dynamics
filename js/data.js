@@ -317,7 +317,50 @@ const RELEASES = [
       },
     ],
   },
-];
+
+   // 2Sloo MasterSet FFB for the MozaR5 with Beamng
+
+{
+    id: "2sloo-masterset-fb-for-the-mozar5-with-beamng",
+    title: "2Sloo MasterSet FFB for the MozaR5",
+    category: "ffb",
+    game: "beamng",
+    version: "1.0",
+    date: "2026-15-08",
+    dateDisplay: "August 2026",
+    featured: true,
+    placeholder: true,
+    thumbnail: "assets/thumbs/ffb.svg",
+    shortDescription: "All around ffb preset for Beamng Drive",
+    description:
+      "This is an all around ffb preset for Beamng Drive. Its AMAZING for drifting and racing. It feels good with off-roading, however, I don't know what off-roading feels like in real life, so I can't be accurate with it.",
+    whatsIncluded: ["Drift FFB", "Street FFB", "Racing FFB", "Universal FFB"],
+    recommendedFor: ["Moza R5", "Moza R9", "Moza", "Other direct-drive and belt-driven wheels"],
+    installation:
+      "1. Download the pack from ModsFire (or a mirror below).\n2. Extract the .zip to a folder you can find again.\n3. View How ToUse txt file",
+    tags: ["ffb", "force feedback", "beamng", "drift", "street", "racing", "moza"],
+    links: {
+      modsfire: "https://modsfire.com/ZJx5Se19AHe21X9",
+      mediafire: "#",
+      googledrive: "#",
+    },
+    videos: {
+      tutorial: "",
+      showcase: "",
+    },
+    changelog: [
+      {
+        version: "1.0",
+        date: "August 2026",
+        notes: ["Initial release", "Drift, street, racing, and universal profiles included"],
+      },
+    ],
+  },
+
+
+// PASTE BEFORE THIS
+   
+   ];
 /* --------------------------------------------------------------------
    GAMES PLANNED FOR THE FUTURE (not shown in navigation yet)
    Kept here so the data structure is ready when you decide to add them.
