@@ -277,13 +277,17 @@ const RELEASES = [
    
    
    // THIS IS WHERE THE ACTUAL RELEASES START. ALL ABOVE ARE EXAMPLES AND TEMPLATES DO NOT REMOVE THEM pretty please
+
+
+
+   
 {
     id: "2Sloo EVP Beamng Graphics Pack",
-    title: "2Sloo Graphics Pack",
+    title: "2Sloo EVP Beamng Graphics Pack",
     category: "graphics",
     game: "beamng",
     version: "1.0",
-    date: "2026-07-01",
+    date: "2026-12-08",
     dateDisplay: "August 2026",
     featured: true,
     placeholder: false,
