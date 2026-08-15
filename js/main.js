@@ -33,6 +33,10 @@ function escapeHtml(str) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
 }
+function parseReleaseDate(d) {
+  const t = new Date(d).getTime();
+  return isNaN(t) ? 0 : t; // an invalid/typo'd date sinks to the bottom instead of breaking the sort
+}
 function visibleReleases() {
   return SITE.showPlaceholders ? RELEASES : RELEASES.filter((r) => !r.placeholder);
 }
@@ -43,7 +47,7 @@ function releasesFor(categoryId, gameId) {
       if (gameId && gameId !== "all" && r.game !== gameId) return false;
       return true;
     })
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
+    .sort((a, b) => parseReleaseDate(b.date) - parseReleaseDate(a.date));
 }
 
 const SORT_OPTIONS = [
@@ -57,14 +61,14 @@ function sortReleases(list, sortId) {
   const sorted = [...list];
   switch (sortId) {
     case "oldest":
-      return sorted.sort((a, b) => new Date(a.date) - new Date(b.date));
+      return sorted.sort((a, b) => parseReleaseDate(a.date) - parseReleaseDate(b.date));
     case "name-asc":
       return sorted.sort((a, b) => a.title.localeCompare(b.title));
     case "name-desc":
       return sorted.sort((a, b) => b.title.localeCompare(a.title));
     case "newest":
     default:
-      return sorted.sort((a, b) => new Date(b.date) - new Date(a.date));
+      return sorted.sort((a, b) => parseReleaseDate(b.date) - parseReleaseDate(a.date));
   }
 }
 
@@ -754,7 +758,7 @@ function renderChangelogPage() {
     });
   });
 
-  entries.sort((a, b) => new Date(b.release.date) - new Date(a.release.date));
+  entries.sort((a, b) => parseReleaseDate(b.release.date) - parseReleaseDate(a.release.date));
 
   mount.innerHTML =
     entries
