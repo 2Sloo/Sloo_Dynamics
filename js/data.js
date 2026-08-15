@@ -25,7 +25,7 @@ const SITE = {
   // Replace with a path to your own logo (e.g. "assets/logo.png") to
   // switch from text branding to an image logo. Leave as null to use
   // the text-based "2SLOO" wordmark everywhere.
-  logoImage: null,
+  logoImage: "assets/logo.png",
 
   // Social links. Replace the placeholder strings with your real URLs.
   // Leave a value as "" (empty string) to hide that link from the site.
