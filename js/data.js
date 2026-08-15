@@ -30,10 +30,10 @@ const SITE = {
   // Social links. Replace the placeholder strings with your real URLs.
   // Leave a value as "" (empty string) to hide that link from the site.
   social: {
-    youtube: "YOUR_YOUTUBE_URL",
-    discord: "YOUR_DISCORD_URL",
-    tiktok: "YOUR_TIKTOK_URL",
-    instagram: "YOUR_INSTAGRAM_URL",
+    youtube: "https://www.youtube.com/@2Sloo",
+    discord: "",
+    tiktok: "https://www.tiktok.com/@sloosight",
+    instagram: "",
   },
 
   // Optional: paste an analytics snippet ID here later (e.g. Plausible,
@@ -53,7 +53,7 @@ const CATEGORIES = [
     shortName: "FFB",
     tagline: "Force-feedback presets and wheel settings.",
     description:
-      "Force-feedback presets tuned for drift, street, and racing driving styles — dialed in across wheelbases so the wheel talks to you instead of fighting you.",
+      "Force-feedback presets tuned for drift, street, and racing driving styles.",
     page: "ffb-settings.html",
   },
   {
@@ -62,7 +62,7 @@ const CATEGORIES = [
     shortName: "Graphics",
     tagline: "Visual settings, ReShade presets, and optimization configs.",
     description:
-      "Graphics presets, ReShade profiles, and performance configs — built to look right and still hold your frame rate.",
+      "Graphics presets, ReShade profiles, and performance configs.",
     page: "graphics.html",
   },
   {
@@ -71,16 +71,16 @@ const CATEGORIES = [
     shortName: "Setups",
     tagline: "Tuning files for grip, drift, and track driving.",
     description:
-      "Suspension, alignment, and gearing setups for grip, drift, and track driving — start from something that already works.",
+      "Suspension, alignment, and gearing setups for grip, drift, and track driving.",
     page: "vehicle-setups.html",
   },
   {
     id: "other",
     name: "Other",
     shortName: "Other",
-    tagline: "Camera settings, controller configs, guides, and tools.",
+    tagline: "Camera settings, guides, tools, and whatever else I may add.",
     description:
-      "Everything else — camera settings, controller configs, guides, and one-off tools that don't fit neatly anywhere else.",
+      "Everything else that doesn't fit neatly anywhere else.",
     page: "other.html",
   },
 ];
