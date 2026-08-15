@@ -297,9 +297,14 @@ function releaseCountHtml(count) {
 function renderHomepage() {
   const catMount = qs("#category-grid");
   const heroBg = qs("#hero-bg");
+  const countStat = qs("#release-count-stat");
 
   if (heroBg && SITE.heroBackground) {
     heroBg.style.backgroundImage = `url('${SITE.heroBackground}')`;
+  }
+
+  if (countStat) {
+    countStat.textContent = visibleReleases().length;
   }
 
   if (catMount) {
