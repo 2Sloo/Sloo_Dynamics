@@ -448,7 +448,13 @@ function renderCategoryPage(categoryId) {
   document.title = `${cat.name} — ${SITE.brand}`;
 
   const heroBg = qs("#category-hero-bg");
-  if (heroBg && cat.image) {
+  const hasPageBg = SITE.pageBackgrounds && SITE.pageBackgrounds[cat.id];
+  if (heroBg && cat.image && !hasPageBg) {
+    // Only paint the category thumbnail as its own hero banner when this
+    // category has no full-page background set. Once a page background
+    // exists, it already flows continuously behind the hero (see
+    // applyPageBackground), so painting a second, different image here
+    // would create a visible seam where the two meet.
     heroBg.style.backgroundImage = `url('${cat.image}')`;
   }
 
