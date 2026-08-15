@@ -809,10 +809,16 @@ function renderAboutSocial() {
 function applyPageBackground(page, categoryId) {
   const key = page === "category" ? categoryId : page;
   const url = SITE.pageBackgrounds && SITE.pageBackgrounds[key];
-  if (url) {
-    document.body.style.setProperty("--page-bg-image", `url('${url}')`);
-    document.body.classList.add("has-page-bg");
-  }
+  if (!url) return;
+  // Set the background directly (rather than via a CSS custom property)
+  // so it can't be affected by browser quirks around url() inside
+  // custom properties set from JavaScript.
+  document.body.style.backgroundImage =
+    `linear-gradient(180deg, rgba(10,11,13,0.5), rgba(10,11,13,0.88) 55%, rgb(10,11,13) 100%), url('${url}')`;
+  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundPosition = "center top";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundAttachment = "fixed";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
