@@ -334,7 +334,7 @@ const RELEASES = [
     shortDescription: "All around ffb preset for Beamng Drive",
     description:
       "This is an all around ffb preset for Beamng Drive. Its AMAZING for drifting and racing. It feels good with off-roading, however, I don't know what off-roading feels like in real life, so I can't be accurate with it.",
-    whatsIncluded: ["Drift FFB", "Street FFB", "Racing FFB", "Universal FFB"],
+    whatsIncluded: ["Universal FFB that is very good with drifting"],
     recommendedFor: ["Moza R5", "Moza R9", "Moza", "Other direct-drive and belt-driven wheels"],
     installation:
       "1. Download the pack from ModsFire.\n2. Extract the .zip to a folder you can find again.\n3. View the HowToUse.txt file for next steps.",
