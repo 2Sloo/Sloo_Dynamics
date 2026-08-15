@@ -323,7 +323,7 @@ const RELEASES = [
     category: "graphics",
     game: "beamng",
     version: "1.0",
-    date: "2026-12-08",
+    date: "2026-08-12",
     dateDisplay: "August 2026",
     featured: true,
     placeholder: false,
