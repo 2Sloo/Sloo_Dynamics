@@ -55,15 +55,9 @@ body {
 
 body.nav-open { overflow: hidden; }
 
-body.has-page-bg {
-  background-image:
-    linear-gradient(180deg, rgba(10,11,13,0.5), rgba(10,11,13,0.88) 55%, var(--bg) 100%),
-    var(--page-bg-image);
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
+/* Per-page background images are now applied directly via inline style
+   from js/main.js (applyPageBackground) instead of through this class,
+   to avoid a cross-browser quirk with url() inside custom properties. */
 
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
