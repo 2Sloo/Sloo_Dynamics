@@ -39,6 +39,12 @@ const SITE = {
   // Optional: paste an analytics snippet ID here later (e.g. Plausible,
   // GoatCounter, Google Analytics). See README "Adding analytics".
   analyticsId: "",
+
+  // Set to false to hide every release marked "placeholder: true" below
+  // from the homepage, category pages, game pages, All Settings, search,
+  // and the changelog. Their release.html pages still work if someone has
+  // a direct link, they just won't show up while browsing.
+  showPlaceholders: false,
 };
 
 /* --------------------------------------------------------------------

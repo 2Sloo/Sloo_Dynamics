@@ -33,12 +33,17 @@ function escapeHtml(str) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;");
 }
+function visibleReleases() {
+  return SITE.showPlaceholders ? RELEASES : RELEASES.filter((r) => !r.placeholder);
+}
 function releasesFor(categoryId, gameId) {
-  return RELEASES.filter((r) => {
-    if (categoryId && categoryId !== "all" && r.category !== categoryId) return false;
-    if (gameId && gameId !== "all" && r.game !== gameId) return false;
-    return true;
-  }).sort((a, b) => new Date(b.date) - new Date(a.date));
+  return visibleReleases()
+    .filter((r) => {
+      if (categoryId && categoryId !== "all" && r.category !== categoryId) return false;
+      if (gameId && gameId !== "all" && r.game !== gameId) return false;
+      return true;
+    })
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
 const SORT_OPTIONS = [
@@ -553,7 +558,7 @@ function renderChangelogPage() {
   if (!mount) return;
 
   const entries = [];
-  RELEASES.forEach((release) => {
+  visibleReleases().forEach((release) => {
     (release.changelog || []).forEach((entry) => {
       entries.push({ release, entry });
     });
