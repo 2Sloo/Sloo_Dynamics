@@ -380,6 +380,46 @@ const RELEASES = [
     ],
   },
 
+   // Sloo Assetto Corsa Moza Drift Settings
+
+   {
+    id: "2sloo-assetto-corsa-drift-moza-settings",
+    title: "2Sloo Assetto Corsa Moza Drift Settings",
+    category: "ffb",
+    game: "assetto-corsa",
+    version: "1.0",
+    date: "2026-15-08",
+    dateDisplay: "August 2026",
+    featured: true,
+    placeholder: false,
+    thumbnail: "assets/releasethumbs/2Sloo Assetto Corsa Moza Drift Settings Thumb.jpg",
+    shortDescription: "Force-feedback settings for drifting with Moza",
+    description:
+      "This is my personal ffb preset that I use for drifting and tandems. It's smooth, accurate, and an overall good pick for Moza users.",
+    whatsIncluded: ["Drift FFB"],
+    recommendedFor: ["Moza R3", "Moza R5", "Moza R9", "Other direct-drive wheels"],
+    installation:
+      "1. Download the pack from ModsFire.\n2. Extract the .zip to a folder you can find again.\n3. View the HowToUse.txt file for next steps.",
+    tags: ["ffb", "force feedback", "assettocorsa", "drift", "moza"],
+    links: {
+      modsfire: "https://modsfire.com/6DbxOGYrprR5bzM",
+      mediafire: "#",
+      googledrive: "#",
+    },
+    videos: {
+      tutorial: "",
+      showcase: "",
+    },
+    changelog: [
+      {
+        version: "1.0",
+        date: "August 2026",
+        notes: ["Initial release"],
+      },
+    ],
+  },
+   
+
 
 // PASTE BEFORE THIS
    
