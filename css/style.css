@@ -251,8 +251,27 @@ p { margin: 0 0 1em; color: var(--text-dim); }
   inset: 0;
   background: radial-gradient(ellipse 700px 400px at 80% -10%, rgba(79,209,255,0.14), transparent 60%);
   pointer-events: none;
+  z-index: 2;
 }
-.hero-inner { position: relative; max-width: 720px; }
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.32;
+  filter: saturate(0.85) blur(0.5px);
+  z-index: 0;
+  transform: scale(1.03); /* hides the soft edge the blur can leave */
+}
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(10,11,13,0.94) 0%, rgba(10,11,13,0.75) 45%, rgba(10,11,13,0.35) 100%),
+    linear-gradient(180deg, rgba(10,11,13,0.2), rgba(10,11,13,0.85) 90%);
+  z-index: 1;
+}
+.hero-inner { position: relative; z-index: 3; max-width: 720px; }
 .hero h1 {
   font-size: clamp(48px, 9vw, 92px);
   line-height: 0.95;
@@ -538,6 +557,11 @@ p { margin: 0 0 1em; color: var(--text-dim); }
 .game-card p { font-size: 14px; margin-bottom: 22px; }
 .game-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .release-count { font-family: var(--font-mono); font-size: 12px; color: var(--text-faint); }
+.release-count.has-releases {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 13px;
+}
 
 /* ---------------------------------- filters / search (all settings) ---------------------------------- */
 
@@ -680,15 +704,36 @@ p { margin: 0 0 1em; color: var(--text-dim); }
 /* ---------------------------------- changelog ---------------------------------- */
 
 .changelog-entry {
+  display: flex;
+  gap: 20px;
   padding: 26px 0;
   border-bottom: 1px solid var(--border);
 }
 .changelog-entry:first-child { padding-top: 0; }
+.changelog-thumb-link {
+  flex-shrink: 0;
+  width: 140px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.changelog-thumb {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  background: var(--panel-2);
+}
+.changelog-body { flex: 1; min-width: 0; }
 .changelog-meta { display: flex; gap: 12px; align-items: center; margin-bottom: 8px; }
 .changelog-entry h3 { font-size: 22px; margin-bottom: 8px; }
 .changelog-entry h3 a:hover { color: var(--accent-strong); }
 .changelog-entry ul { list-style: disc; padding-left: 22px; margin-top: 12px; }
 .changelog-entry li { color: var(--text-dim); margin-bottom: 4px; }
+
+@media (max-width: 560px) {
+  .changelog-entry { flex-direction: column; }
+  .changelog-thumb-link { width: 100%; }
+}
 
 /* ---------------------------------- about page ---------------------------------- */
 
