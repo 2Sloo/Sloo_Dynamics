@@ -658,27 +658,15 @@ p { margin: 0 0 1em; color: var(--text-dim); }
   border-radius: var(--radius-lg);
   padding: 24px;
   margin-bottom: 20px;
-a.dl-primary {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 12px 20px !important;
-  text-align: center !important;
+.dl-primary {
+  width: 100%;
+  flex-direction: column;
+  gap: 4px;
 }
-
-a.dl-primary span {
-  display: block !important;
-}
-
-a.dl-primary em {
-  position: static !important;
-  display: block !important;
-  font-style: normal !important;
-  font-size: 11px !important;
-  opacity: 0.75 !important;
-  margin-top: 2px !important;
-  transform: none !important;
+.dl-primary em {
+  font-style: normal;
+  font-size: 11px;
+  opacity: 0.75;
 }
 .dl-pending { font-size: 12px; color: var(--hazard); margin: 8px 0 0; }
 .dl-support { font-size: 13px; margin: 12px 0 18px; padding: 12px; background: rgba(79,209,255,0.06); border: 1px solid var(--accent-dim); border-radius: var(--radius); color: var(--text-dim); }
