@@ -322,7 +322,7 @@ const RELEASES = [
 
 {
     id: "2sloo-masterset-fb-for-the-mozar5-with-beamng",
-    title: "2Sloo MasterSet FFB for the MozaR5",
+    title: "2Sloo MasterSet FFB for Moza",
     category: "ffb",
     game: "beamng",
     version: "1.0",
@@ -331,7 +331,7 @@ const RELEASES = [
     featured: true,
     placeholder: false,
     thumbnail: "assets/releasethumbs/MasterSetFFB.jpg",
-    shortDescription: "All around ffb preset for Beamng Drive",
+    shortDescription: "All around ffb preset for Beamng Drive with Moza",
     description:
       "This is an all around ffb preset for Beamng Drive. Its AMAZING for drifting and racing. It feels good with off-roading, however, I don't know what off-roading feels like in real life, so I can't be accurate with it.",
     whatsIncluded: ["Universal FFB that is very good with drifting"],
