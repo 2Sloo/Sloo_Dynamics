@@ -160,6 +160,15 @@ const GAMES = [
                      string) to skip it entirely — nothing shows, no gap,
                      no placeholder. Works with youtube.com/watch?v=...,
                      youtu.be/..., and YouTube Shorts links.
+     images        - optional. An array of image paths for a scrollable
+                     screenshot gallery on the release page — handy for
+                     things like camera settings where a screenshot says
+                     it all and there's no separate download pack video.
+                     One image just shows on its own; two or more get
+                     arrows + dots so people can swipe/click through them,
+                     like an Instagram post. Leave as an empty array [] to
+                     skip the gallery entirely.
+                     Example: images: ["assets/releaseimages/shot1.jpg", "assets/releaseimages/shot2.jpg"],
      changelog     - newest entry first
    -------------------------------------------------------------------- */
 const RELEASES = [
@@ -187,6 +196,7 @@ const RELEASES = [
       mediafire: "#",
       googledrive: "#",
     },
+    images: [],
     videos: {
       tutorial: "",
       showcase: "",
@@ -223,6 +233,7 @@ const RELEASES = [
       mediafire: "#",
       googledrive: "#",
     },
+    images: [],
     videos: {
       tutorial: "",
       showcase: "",
@@ -255,6 +266,7 @@ const RELEASES = [
       mediafire: "#",
       googledrive: "#",
     },
+    images: [],
     videos: {
       tutorial: "",
       showcase: "",
@@ -287,6 +299,7 @@ const RELEASES = [
       mediafire: "#",
       googledrive: "#",
     },
+    images: [],
     videos: {
       tutorial: "",
       showcase: "",
@@ -328,6 +341,7 @@ const RELEASES = [
       mediafire: "https://www.mediafire.com/file/f5538mqy5ghnauj/2Sloo_Beamng_EVP.zip/file",
       googledrive: "#",
     },
+    images: [],
     videos: {
       tutorial: "https://youtu.be/j4G5CuLFtag?si=GdUZVvysNtzli_OJ",
       showcase: "",
@@ -367,6 +381,7 @@ const RELEASES = [
       mediafire: "#",
       googledrive: "#",
     },
+    images: [],
     videos: {
       tutorial: "",
       showcase: "https://youtu.be/VtHM2b1mVHs",
@@ -406,6 +421,7 @@ const RELEASES = [
       mediafire: "#",
       googledrive: "#",
     },
+    images: [],
     videos: {
       tutorial: "",
       showcase: "",

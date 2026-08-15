@@ -263,6 +263,86 @@ function youtubeEmbedUrl(url) {
   return null;
 }
 
+function imageGalleryHtml(images, releaseTitle) {
+  if (!images || !images.length) return "";
+  const slides = images
+    .map(
+      (src, i) => `
+      <div class="gallery-slide" data-index="${i}">
+        <img src="${src}" alt="${escapeHtml(releaseTitle)} screenshot ${i + 1}" loading="${i === 0 ? "eager" : "lazy"}">
+      </div>`
+    )
+    .join("");
+
+  const multi = images.length > 1;
+
+  const dots = multi
+    ? `<div class="gallery-dots" role="tablist" aria-label="Screenshot navigation">
+        ${images.map((_, i) => `<button type="button" class="gallery-dot${i === 0 ? " is-active" : ""}" data-index="${i}" aria-label="Go to image ${i + 1}"></button>`).join("")}
+      </div>`
+    : "";
+
+  const arrows = multi
+    ? `<button type="button" class="gallery-arrow gallery-arrow-prev" aria-label="Previous image">&larr;</button>
+       <button type="button" class="gallery-arrow gallery-arrow-next" aria-label="Next image">&rarr;</button>`
+    : "";
+
+  return `
+    <div class="image-gallery" id="release-gallery">
+      <div class="gallery-track">${slides}</div>
+      ${arrows}
+      ${dots}
+    </div>
+  `;
+}
+
+function initReleaseGallery() {
+  const gallery = qs("#release-gallery");
+  if (!gallery) return;
+  const track = qs(".gallery-track", gallery);
+  const slides = qsa(".gallery-slide", gallery);
+  const dots = qsa(".gallery-dot", gallery);
+  const prevBtn = qs(".gallery-arrow-prev", gallery);
+  const nextBtn = qs(".gallery-arrow-next", gallery);
+  if (!track || !slides.length) return;
+
+  let activeIndex = 0;
+
+  function setActive(index) {
+    activeIndex = Math.max(0, Math.min(index, slides.length - 1));
+    dots.forEach((d, i) => d.classList.toggle("is-active", i === activeIndex));
+  }
+
+  function goTo(index) {
+    const clamped = Math.max(0, Math.min(index, slides.length - 1));
+    const slide = slides[clamped];
+    if (slide) {
+      track.scrollTo({ left: slide.offsetLeft, behavior: "smooth" });
+    }
+    setActive(clamped);
+  }
+
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => goTo(parseInt(dot.getAttribute("data-index"), 10)));
+  });
+  if (prevBtn) prevBtn.addEventListener("click", () => goTo(activeIndex - 1));
+  if (nextBtn) nextBtn.addEventListener("click", () => goTo(activeIndex + 1));
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+            setActive(parseInt(entry.target.getAttribute("data-index"), 10));
+          }
+        });
+      },
+      { root: track, threshold: [0.6] }
+    );
+    slides.forEach((s) => observer.observe(s));
+  }
+}
+
 function videoEmbedHtml(label, url) {
   const embed = youtubeEmbedUrl(url);
   if (!embed) return "";
@@ -494,6 +574,18 @@ function renderReleasePage() {
       <div class="release-main">
         ${
           (() => {
+            const galleryHtml = imageGalleryHtml(release.images, release.title);
+            return galleryHtml
+              ? `<section class="release-section">
+                  <h2>Screenshots</h2>
+                  ${galleryHtml}
+                </section>`
+              : "";
+          })()
+        }
+
+        ${
+          (() => {
             const videosHtml = [
               videoEmbedHtml("Tutorial", release.videos && release.videos.tutorial),
               videoEmbedHtml("Showcase", release.videos && release.videos.showcase),
@@ -565,6 +657,8 @@ function renderReleasePage() {
       </aside>
     </div>
   `;
+
+  initReleaseGallery();
 }
 
 /* --------------------------- all settings page --------------------------------- */
