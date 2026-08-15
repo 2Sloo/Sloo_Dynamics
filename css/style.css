@@ -658,6 +658,7 @@ p { margin: 0 0 1em; color: var(--text-dim); }
   border-radius: var(--radius-lg);
   padding: 24px;
   margin-bottom: 20px;
+}
 .dl-primary {
   width: 100%;
   flex-direction: column;
@@ -760,3 +761,38 @@ p { margin: 0 0 1em; color: var(--text-dim); }
 
 .text-center { text-align: center; }
 .mt-32 { margin-top: 32px; }
+
+/* ---------------------------------- video embeds (release page) ---------------------------------- */
+
+.video-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .video-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.video-embed { display: flex; flex-direction: column; gap: 8px; }
+.video-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+.video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
