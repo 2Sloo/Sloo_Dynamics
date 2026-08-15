@@ -660,7 +660,7 @@ p { margin: 0 0 1em; color: var(--text-dim); }
   margin-bottom: 20px;
 }
 .dl-primary { width: 100%; justify-content: space-between; padding: 14px 28px !important; gap: 12px; }
-.dl-primary em { font-style: normal; font-size: 11px; opacity: 0.75; margin-right: 14px !important; }
+.dl-primary em { font-style: normal; font-size: 11px; opacity: 0.75; display: inline-block; transform: translateX(-12px) !important; }
 .dl-pending { font-size: 12px; color: var(--hazard); margin: 8px 0 0; }
 .dl-support { font-size: 13px; margin: 12px 0 18px; padding: 12px; background: rgba(79,209,255,0.06); border: 1px solid var(--accent-dim); border-radius: var(--radius); color: var(--text-dim); }
 .dl-mirrors { display: flex; flex-direction: column; gap: 8px; }
