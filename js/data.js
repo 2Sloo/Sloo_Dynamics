@@ -434,6 +434,43 @@ const RELEASES = [
       },
     ],
   },
+
+   // Beamng Enhanced Chase Cam Settings
+
+   {
+    id: "2sloo-enhanced-chase-camera-settings-for-beamng",
+    title: "2Sloo Enhanced Chase Camera Settings For Beamng",
+    category: "other",
+    game: "beamng",
+    version: "1.0",
+    date: "2026-08-16",
+    dateDisplay: "August 2026",
+    featured: true,
+    placeholder: false,
+    thumbnail: "assets/releasethumbs/EnhancedChaseCamSettingsThumb.jpg",
+    shortDescription: "My settings for the Enhanced Chase Camera Mod in Beamng",
+    description:
+      "My settings for the Enhanced Chase Camera Mod in Beamng",
+    whatsIncluded: ["Camera settings"],
+    recommendedFor: ["Drifting"],
+    installation:
+      "1. Download the pack from ModsFire (or a mirror below).\n2. Extract the .zip to a folder you can find again.\n3. Follow the quick-start notes included in the pack for each file.",
+    tags: ["camera", "controller", "misc", "assetto corsa rally", "guide"],
+    links: {
+      modsfire: "#",
+      mediafire: "#",
+      googledrive: "#",
+    },
+   // Example: images: ["assets/releaseimages/shot1.jpg", "assets/releaseimages/shot2.jpg"],
+    images: ["assets/releaseimages/2Sloo Enhanced Chase Camera Settings.png"],
+    videos: {
+      tutorial: "",
+      showcase: "",
+    },
+    changelog: [
+      { version: "1.0", date: "August 2026", notes: ["Initial release"] },
+    ],
+  },
    
 
 
