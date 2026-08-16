@@ -1,5 +1,11 @@
 # Sloo Dynamics
 
+<p align="center">
+  <a href="https://2sloo.github.io/Sloo_Dynamics/">
+    <img src="https://img.shields.io/badge/🌐%20VISIT%20SLOO%20DYNAMICS-111111?style=for-the-badge&logoColor=white" alt="Visit Sloo Dynamics">
+  </a>
+</p>
+
 > **Free projects, settings, and tools for the sim-racing community.**
 
 Sloo Dynamics is my personal hub for the projects, mods, graphics, settings, and other stuff I make for racing games and the sim-racing community.
