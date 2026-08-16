@@ -12,7 +12,7 @@
    changelog, search) reads from this file automatically. You do not need
    to touch any HTML when you add a release.
 
-   See README.md for a full walkthrough with screenshots-in-words.
+  
    ========================================================================== */
 
 /* --------------------------------------------------------------------
