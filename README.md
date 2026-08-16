@@ -28,7 +28,7 @@ The goal of Sloo Dynamics is pretty simple:
 
 The **Sloo Dynamics website** is where all of the releases are organized and made available to download.
 
-It's designed to keep everything in one place instead of having projects scattered across different posts, Discord messages, and download links.
+It's designed to keep everything in one place instead of having projects scattered across different posts.
 
 **[Visit Sloo Dynamics →](https://2sloo.github.io/Sloo_Dynamics/)**
 
