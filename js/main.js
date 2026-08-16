@@ -224,8 +224,7 @@ function renderFooter() {
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-notice">No reuploading, redistributing, or re-hosting any files, settings, presets, or content from this site elsewhere, under any circumstances — permanently and without exception.</p>
-      <p>&copy; ${new Date().getFullYear()} ${SITE.brand}. Settings shared for free — downloads through ModsFire help support future releases.</p>
+      <p>&copy; ${new Date().getFullYear()} ${SITE.brand}. Settings shared for free — downloads through ModsFire help support future releases. No reuploading, redistributing, or re-hosting any files, settings, presets, or content from this site elsewhere, under any circumstances — permanently and without exception.</p>
     </div>
   `;
 }
