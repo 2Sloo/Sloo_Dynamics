@@ -454,7 +454,7 @@ const RELEASES = [
     whatsIncluded: ["Camera settings"],
     recommendedFor: ["Drifting"],
     installation:
-      "1. Look at screenshot for settings.",
+      "1. Download the Mod https://www.beamng.com/resources/enhanced-chase-camera.29131/ \n2. Look at screenshot for settings. ",
     tags: ["camera", "settings"],
     links: {
       modsfire: "#",
