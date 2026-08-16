@@ -368,6 +368,15 @@ function videoEmbedHtml(label, url) {
 
 /* ------------------------------ release card ------------------------------ */
 
+const NEW_BADGE_DAYS = 14; // change this number to adjust how long the "New" badge shows
+
+function isNewRelease(release) {
+  const released = parseReleaseDate(release.date);
+  if (!released) return false;
+  const ageInDays = (Date.now() - released) / (1000 * 60 * 60 * 24);
+  return ageInDays >= 0 && ageInDays <= NEW_BADGE_DAYS;
+}
+
 function releaseCardHtml(release) {
   const cat = categoryById(release.category);
   const game = gameById(release.game);
@@ -376,6 +385,7 @@ function releaseCardHtml(release) {
       <a href="release.html?id=${release.id}" class="card-thumb-link" aria-hidden="true" tabindex="-1">
         <img src="${release.thumbnail}" alt="" loading="lazy" class="card-thumb">
       </a>
+      ${isNewRelease(release) ? '<span class="badge-new">New</span>' : ""}
       <div class="card-body">
         <div class="card-tags">
           <span class="tag tag-cat">${cat ? cat.shortName : release.category}</span>
@@ -680,19 +690,24 @@ function renderAllSettingsPage() {
   const searchInput = qs("#search-input");
   const resultCount = qs("#result-count");
   const sortMount = qs("#sort-control");
+  const loadMoreWrap = qs("#load-more-wrap");
   if (!grid) return;
+
+  const PAGE_SIZE = 12;
 
   let state = {
     category: getParam("category") || "all",
     game: getParam("game") || "all",
     q: "",
     sort: "newest",
+    visibleCount: PAGE_SIZE,
   };
 
   if (sortMount) {
     sortMount.innerHTML = sortSelectHtml("all-sort", state.sort);
     qs("#all-sort", sortMount).addEventListener("change", (e) => {
       state.sort = e.target.value;
+      state.visibleCount = PAGE_SIZE;
       renderResults();
     });
   }
@@ -713,6 +728,7 @@ function renderAllSettingsPage() {
       state[key] = btn.getAttribute("data-" + key);
       qsa("button", mount).forEach((b) => b.classList.remove("is-active"));
       btn.classList.add("is-active");
+      state.visibleCount = PAGE_SIZE;
       renderResults();
     });
   }
@@ -732,11 +748,29 @@ function renderAllSettingsPage() {
     return haystack.includes(q.toLowerCase());
   }
 
+  function renderLoadMoreButton(totalCount) {
+    if (!loadMoreWrap) return;
+    if (state.visibleCount >= totalCount) {
+      loadMoreWrap.innerHTML = "";
+      return;
+    }
+    const remaining = totalCount - state.visibleCount;
+    loadMoreWrap.innerHTML = `<button type="button" class="btn btn-outline load-more-btn" id="load-more-btn">Load More (${remaining} left)</button>`;
+    qs("#load-more-btn", loadMoreWrap).addEventListener("click", () => {
+      state.visibleCount += PAGE_SIZE;
+      renderResults();
+    });
+  }
+
   function renderResults() {
     const filtered = releasesFor(state.category, state.game).filter((r) => matchesSearch(r, state.q));
     const list = sortReleases(filtered, state.sort);
-    grid.innerHTML = list.map(releaseCardHtml).join("") || emptyStateHtml("Nothing matches those filters yet. Try clearing a filter or searching a different term.");
-    if (resultCount) resultCount.textContent = `${list.length} result${list.length === 1 ? "" : "s"}`;
+    const visible = list.slice(0, state.visibleCount);
+    grid.innerHTML = visible.map(releaseCardHtml).join("") || emptyStateHtml("Nothing matches those filters yet. Try clearing a filter or searching a different term.");
+    if (resultCount) {
+      resultCount.textContent = list.length ? `Showing ${visible.length} of ${list.length}` : "0 results";
+    }
+    renderLoadMoreButton(list.length);
   }
 
   if (catFilterMount) buildFilterButtons(catFilterMount, CATEGORIES, "category");
@@ -744,6 +778,7 @@ function renderAllSettingsPage() {
   if (searchInput) {
     searchInput.addEventListener("input", (e) => {
       state.q = e.target.value;
+      state.visibleCount = PAGE_SIZE;
       renderResults();
     });
   }
