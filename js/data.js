@@ -48,7 +48,7 @@ const SITE = {
   // (ffb, graphics, vehicle-setups, other). game.html and release.html
   // share the "game" and "release" keys across every combination.
   pageBackgrounds: {
-    home: "",
+    home: "assets/hero-bg.jpg",
     "all-settings": "",
     changelog: "",
     about: "",
