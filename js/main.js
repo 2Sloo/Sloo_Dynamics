@@ -93,6 +93,16 @@ const SOCIAL_ICONS = {
 };
 
 function brandWordmarkHtml(brand) {
+  // Two-tone split: first word in white, the rest in the accent color
+  // (matches "SLOO DYNAMICS" style — first word white, second blue).
+  // Falls back to splitting a leading number from letters (e.g. the old
+  // "2Sloo") if the brand name has no space to split on.
+  const spaceIndex = brand.indexOf(" ");
+  if (spaceIndex > -1) {
+    const first = brand.slice(0, spaceIndex);
+    const rest = brand.slice(spaceIndex + 1);
+    return `<span class="brand-mark"><span class="brand-prefix">${first}</span> <span class="brand-suffix">${rest}</span></span>`;
+  }
   const m = brand.match(/^([0-9]*)([A-Za-z].*)$/);
   if (!m) return `<span class="brand-mark">${brand}</span>`;
   const [, prefix, rest] = m;
@@ -188,7 +198,7 @@ function renderFooter() {
   mount.innerHTML = `
     <div class="footer-inner">
       <div class="footer-brand">
-        <span class="brand-mark">${SITE.brand}</span>
+        ${brandWordmarkHtml(SITE.brand)}
         <p>Free sim-racing settings, presets, and setups. No accounts, no paywalls.</p>
       </div>
       <div class="footer-col">
@@ -214,6 +224,7 @@ function renderFooter() {
       </div>
     </div>
     <div class="footer-bottom">
+      <p class="footer-notice">No reuploading, redistributing, or re-hosting any files, settings, presets, or content from this site elsewhere, under any circumstances — permanently and without exception.</p>
       <p>&copy; ${new Date().getFullYear()} ${SITE.brand}. Settings shared for free — downloads through ModsFire help support future releases.</p>
     </div>
   `;

@@ -19,7 +19,7 @@
    SITE-WIDE SETTINGS
    -------------------------------------------------------------------- */
 const SITE = {
-  brand: "2Sloo",
+  brand: "Sloo Dynamics",
   tagline: "SIM RACING SETTINGS HUB",
 
   // Replace with a path to your own logo (e.g. "assets/logo.png") to
