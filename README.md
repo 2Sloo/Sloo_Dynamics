@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://2sloo.github.io/Sloo_Dynamics/">
-    <img src="https://img.shields.io/badge/🌐%20VISIT%20SLOO%20DYNAMICS-111111?style=for-the-badge&logoColor=white" alt="Visit Sloo Dynamics">
+    <img src="https://img.shields.io/badge/🌐%20VISIT%20SLOO%20DYNAMICS-A8E6A3?style=for-the-badge&labelColor=8BCF88&color=A8E6A3" alt="Visit Sloo Dynamics" width="500" height="75">
   </a>
 </p>
 
