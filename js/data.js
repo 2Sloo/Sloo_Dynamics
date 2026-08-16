@@ -454,8 +454,8 @@ const RELEASES = [
     whatsIncluded: ["Camera settings"],
     recommendedFor: ["Drifting"],
     installation:
-      "1. Download the pack from ModsFire (or a mirror below).\n2. Extract the .zip to a folder you can find again.\n3. Follow the quick-start notes included in the pack for each file.",
-    tags: ["camera", "controller", "misc", "assetto corsa rally", "guide"],
+      "1. Look at screenshot for settings.",
+    tags: ["camera", "settings"],
     links: {
       modsfire: "#",
       mediafire: "#",
