@@ -486,6 +486,21 @@ p { margin: 0 0 1em; color: var(--text-dim); }
   transition: border-color 0.18s ease, transform 0.18s ease;
 }
 .card.release-card:hover { border-color: var(--accent-dim); transform: translateY(-3px); }
+.badge-new {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  background: var(--accent);
+  color: #05181f;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 9px;
+  border-radius: 3px;
+}
 .card.release-card::before,
 .card.release-card::after {
   content: "";
@@ -550,7 +565,20 @@ p { margin: 0 0 1em; color: var(--text-dim); }
   position: relative;
   padding: 64px 0 40px;
   overflow: hidden;
-  border-bottom: 1px solid var(--border);
+  border-bottom: none;
+}
+.page-hero::after {
+  /* A feathered hairline instead of a flat 1px cut — fades in from
+     both edges so the section break reads as a soft seam rather than
+     a hard line across the (now continuous) background photo. */
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border) 25%, var(--border) 75%, transparent);
+  z-index: 2;
 }
 .page-hero-bg {
   position: absolute;
@@ -565,9 +593,11 @@ p { margin: 0 0 1em; color: var(--text-dim); }
 .page-hero-scrim {
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(90deg, rgba(10,11,13,0.9) 0%, rgba(10,11,13,0.68) 45%, rgba(10,11,13,0.3) 100%),
-    linear-gradient(180deg, rgba(10,11,13,0.15), rgba(10,11,13,0.75) 90%);
+  /* Only a left-to-right gradient here, for contrast behind the title.
+     No top-to-bottom darkening — that's handled once, continuously, by
+     the body's own background gradient, so there's nothing extra to
+     "step down" once the hero section ends. */
+  background: linear-gradient(90deg, rgba(10,11,13,0.78) 0%, rgba(10,11,13,0.5) 45%, rgba(10,11,13,0.1) 100%);
   z-index: 1;
 }
 .page-hero > .container { position: relative; z-index: 2; }
@@ -654,6 +684,9 @@ p { margin: 0 0 1em; color: var(--text-dim); }
 }
 .search-row input:focus { border-color: var(--accent); outline: none; }
 #result-count { font-family: var(--font-mono); font-size: 12px; color: var(--text-faint); white-space: nowrap; }
+
+.load-more-wrap { display: flex; justify-content: center; margin-top: 32px; }
+.load-more-btn { min-width: 220px; }
 
 /* ---------------------------------- release detail page ---------------------------------- */
 
