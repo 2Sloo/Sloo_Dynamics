@@ -574,7 +574,7 @@ const RELEASES = [
    // Example: images: ["assets/releaseimages/shot1.jpg", "assets/releaseimages/shot2.jpg"],
     images: ["assets/releaseimages/2Sloo Enhanced Chase Camera Settings.png"],
     blurImagesUntilRelease: true,
-      releaseAt: "2026-08-17T02:30:00Z",
+      releaseAt: "",
     videos: {
       tutorial: "",
       showcase: "",
