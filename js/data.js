@@ -226,7 +226,21 @@ const RELEASES = [
       mediafire: "#",
       googledrive: "#",
     },
+     // Example: images: ["assets/releaseimages/shot1.jpg", "assets/releaseimages/shot2.jpg"],
     images: [],
+     //2026-09-01    T    18:00:00         Z
+    //   date     divider    time    "this is UTC"
+// Hours, Minutes, Seconds
+   //  00:00:00 = midnight
+// 06:00:00 = 6:00 AM
+// 12:00:00 = noon
+// 18:00:00 = 6:00 PM
+// 23:00:00 = 11:00 PM
+     // THIS USES UTC TIME
+
+     // If it's during Daylight Saving Time (MDT, UTC-6) — roughly March–November — add 6 hours to convert to UTC.
+// If it's during Standard Time (MST, UTC-7) — roughly November–March — add 7 hours to convert to UTC.
+     
     releaseAt: "",
     videos: {
       tutorial: "",
@@ -458,9 +472,9 @@ const RELEASES = [
       googledrive: "#",
     },
     images: [],
-    releaseAt: "",
+    releaseAt: "2026-08-17T15:00:00Z",
     videos: {
-      tutorial: "",
+      tutorial: "https://youtu.be/ZThMUkHDy2Q",
       showcase: "",
     },
     changelog: [
