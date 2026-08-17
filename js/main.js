@@ -339,7 +339,7 @@ function youtubeEmbedUrl(url) {
   return null;
 }
 
-function imageGalleryHtml(images, releaseTitle) {
+function imageGalleryHtml(images, releaseTitle, blurred) {
   if (!images || !images.length) return "";
   const slides = images
     .map(
@@ -363,9 +363,17 @@ function imageGalleryHtml(images, releaseTitle) {
        <button type="button" class="gallery-arrow gallery-arrow-next" aria-label="Next image">&rarr;</button>`
     : "";
 
+  const blurOverlay = blurred
+    ? `<div class="gallery-blur-overlay">
+        <span class="gallery-blur-badge">Coming Soon</span>
+        <span class="gallery-blur-note">Screenshots revealed at launch</span>
+      </div>`
+    : "";
+
   return `
-    <div class="image-gallery" id="release-gallery">
+    <div class="image-gallery${blurred ? " image-gallery--blurred" : ""}" id="release-gallery">
       <div class="gallery-track">${slides}</div>
+      ${blurOverlay}
       ${arrows}
       ${dots}
     </div>
@@ -668,7 +676,7 @@ function renderReleasePage() {
       <div class="release-main">
         ${
           (() => {
-            const galleryHtml = imageGalleryHtml(release.images, release.title);
+            const galleryHtml = imageGalleryHtml(release.images, release.title, comingSoon && release.blurImagesUntilRelease);
             return galleryHtml
               ? `<section class="release-section">
                   <h2>Screenshots</h2>

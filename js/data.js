@@ -169,6 +169,16 @@ const GAMES = [
                      like an Instagram post. Leave as an empty array [] to
                      skip the gallery entirely.
                      Example: images: ["assets/releaseimages/shot1.jpg", "assets/releaseimages/shot2.jpg"],
+     blurImagesUntilRelease - optional, defaults to false. Only matters
+                     while a release is "Coming Soon" (see releaseAt
+                     below). Set to true and its screenshots still show
+                     (not hidden entirely) but blurred out, with a
+                     "Coming Soon" label over them — good for releases
+                     that are ONLY screenshots with no separate download
+                     yet, like a camera-settings post, where you don't
+                     want the exact settings visible before launch. Leave
+                     false (or leave it out) for releases where showing
+                     the screenshots clearly ahead of time is fine.
      releaseAt     - optional. Set a future date & time to launch this
                      release as "Coming Soon" until that exact moment,
                      then have it unlock automatically — no manual flip
@@ -228,6 +238,7 @@ const RELEASES = [
     },
      // Example: images: ["assets/releaseimages/shot1.jpg", "assets/releaseimages/shot2.jpg"],
     images: [],
+    blurImagesUntilRelease: false,
      //2026-09-01    T    18:00:00         Z
     //   date     divider    time    "this is UTC"
 // Hours, Minutes, Seconds
@@ -280,6 +291,7 @@ const RELEASES = [
     },
      // Example: images: ["assets/releaseimages/shot1.jpg", "assets/releaseimages/shot2.jpg"],
     images: [],
+    blurImagesUntilRelease: false,
      //2026-09-01    T    18:00:00         Z
     //   date     divider    time    "this is UTC"
 // Hours, Minutes, Seconds
@@ -328,6 +340,7 @@ const RELEASES = [
     },
      // Example: images: ["assets/releaseimages/shot1.jpg", "assets/releaseimages/shot2.jpg"],
     images: [],
+    blurImagesUntilRelease: false,
      //2026-09-01    T    18:00:00         Z
     //   date     divider    time    "this is UTC"
 // Hours, Minutes, Seconds
@@ -376,6 +389,7 @@ const RELEASES = [
     },
      // Example: images: ["assets/releaseimages/shot1.jpg", "assets/releaseimages/shot2.jpg"],
     images: [],
+    blurImagesUntilRelease: false,
      //2026-09-01    T    18:00:00         Z
     //   date     divider    time    "this is UTC"
 // Hours, Minutes, Seconds
@@ -432,6 +446,7 @@ const RELEASES = [
       googledrive: "#",
     },
     images: [],
+    blurImagesUntilRelease: false,
     releaseAt: "",
     videos: {
       tutorial: "https://youtu.be/j4G5CuLFtag?si=GdUZVvysNtzli_OJ",
@@ -473,6 +488,7 @@ const RELEASES = [
       googledrive: "#",
     },
     images: [],
+    blurImagesUntilRelease: false,
     releaseAt: "",
     videos: {
       tutorial: "",
@@ -514,6 +530,7 @@ const RELEASES = [
       googledrive: "#",
     },
     images: [],
+    blurImagesUntilRelease: false,
     releaseAt: "2026-08-17T15:00:00Z",
     videos: {
       tutorial: "https://youtu.be/ZThMUkHDy2Q",
@@ -556,7 +573,8 @@ const RELEASES = [
     },
    // Example: images: ["assets/releaseimages/shot1.jpg", "assets/releaseimages/shot2.jpg"],
     images: ["assets/releaseimages/2Sloo Enhanced Chase Camera Settings.png"],
-      releaseAt: "2026-08-17T02:20:00Z",
+    blurImagesUntilRelease: true,
+      releaseAt: "2026-08-17T02:07:00Z",
     videos: {
       tutorial: "",
       showcase: "",
