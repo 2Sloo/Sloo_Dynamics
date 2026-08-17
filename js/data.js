@@ -169,6 +169,36 @@ const GAMES = [
                      like an Instagram post. Leave as an empty array [] to
                      skip the gallery entirely.
                      Example: images: ["assets/releaseimages/shot1.jpg", "assets/releaseimages/shot2.jpg"],
+     releaseAt     - optional. Set a future date & time to launch this
+                     release as "Coming Soon" until that exact moment,
+                     then have it unlock automatically — no manual flip
+                     needed, no revisit required. Leave as "" for a
+                     release that's available right away (the normal,
+                     default behavior every release has used so far).
+
+                     FORMAT: "YYYY-MM-DDTHH:MM:SSZ" — the "Z" means the
+                     time is in UTC. Example — releasing at 6:00 PM UTC
+                     on September 1, 2026:
+                       releaseAt: "2026-09-01T18:00:00Z",
+
+                     TIMEZONE: by default, write the time in UTC (that's
+                     what the "Z" means) — every visitor still sees an
+                     accurate countdown in THEIR OWN local time
+                     automatically; you only ever set the one UTC time,
+                     once. If you'd rather write it in your own timezone
+                     instead of converting to UTC yourself, swap the "Z"
+                     for your timezone's offset from UTC instead, e.g.
+                     "-04:00" for US Eastern Daylight Time:
+                       releaseAt: "2026-09-01T14:00:00-04:00", // 2:00 PM Eastern = 6:00 PM UTC
+                     Not sure of your offset? Search "current time UTC"
+                     and work from there.
+
+                     While a release is "Coming Soon": it still shows up
+                     while browsing (with a "Coming Soon" badge) so people
+                     know it's on the way, but its page shows a live
+                     countdown instead of download buttons, and it won't
+                     count toward the homepage release counter or show up
+                     in the Changelog until it actually goes live.
      changelog     - newest entry first
    -------------------------------------------------------------------- */
 const RELEASES = [
@@ -197,6 +227,7 @@ const RELEASES = [
       googledrive: "#",
     },
     images: [],
+    releaseAt: "",
     videos: {
       tutorial: "",
       showcase: "",
@@ -234,6 +265,7 @@ const RELEASES = [
       googledrive: "#",
     },
     images: [],
+    releaseAt: "",
     videos: {
       tutorial: "",
       showcase: "",
@@ -267,6 +299,7 @@ const RELEASES = [
       googledrive: "#",
     },
     images: [],
+    releaseAt: "",
     videos: {
       tutorial: "",
       showcase: "",
@@ -300,6 +333,7 @@ const RELEASES = [
       googledrive: "#",
     },
     images: [],
+    releaseAt: "",
     videos: {
       tutorial: "",
       showcase: "",
@@ -342,6 +376,7 @@ const RELEASES = [
       googledrive: "#",
     },
     images: [],
+    releaseAt: "",
     videos: {
       tutorial: "https://youtu.be/j4G5CuLFtag?si=GdUZVvysNtzli_OJ",
       showcase: "",
@@ -382,6 +417,7 @@ const RELEASES = [
       googledrive: "#",
     },
     images: [],
+    releaseAt: "",
     videos: {
       tutorial: "",
       showcase: "https://youtu.be/VtHM2b1mVHs",
@@ -422,6 +458,7 @@ const RELEASES = [
       googledrive: "#",
     },
     images: [],
+    releaseAt: "",
     videos: {
       tutorial: "",
       showcase: "",

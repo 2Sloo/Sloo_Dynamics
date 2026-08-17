@@ -37,8 +37,23 @@ function parseReleaseDate(d) {
   const t = new Date(d).getTime();
   return isNaN(t) ? 0 : t; // an invalid/typo'd date sinks to the bottom instead of breaking the sort
 }
+function parseReleaseAt(v) {
+  if (!v) return 0;
+  const t = new Date(v).getTime();
+  return isNaN(t) ? 0 : t;
+}
+function isComingSoon(release) {
+  const target = parseReleaseAt(release.releaseAt);
+  return target > 0 && target > Date.now();
+}
 function visibleReleases() {
   return SITE.showPlaceholders ? RELEASES : RELEASES.filter((r) => !r.placeholder);
+}
+function liveReleases() {
+  // Excludes anything still in its "Coming Soon" countdown window —
+  // used anywhere we only want releases that are actually out yet
+  // (the homepage counter, the changelog).
+  return visibleReleases().filter((r) => !isComingSoon(r));
 }
 function releasesFor(categoryId, gameId) {
   return visibleReleases()
@@ -262,6 +277,53 @@ function downloadButtonsHtml(links) {
   `;
 }
 
+function countdownBlockHtml(release) {
+  const target = parseReleaseAt(release.releaseAt);
+  return `
+    <div class="countdown-block" id="countdown-block" data-target="${target}">
+      <span class="countdown-label">Releasing In</span>
+      <div class="countdown-grid" id="countdown-grid">
+        <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-unit-label">Days</span></div>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-unit-label">Hrs</span></div>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-unit-label">Min</span></div>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-unit-label">Sec</span></div>
+      </div>
+      <p class="countdown-note">This page unlocks automatically the moment it drops — no need to keep refreshing.</p>
+    </div>
+  `;
+}
+
+function initCountdown() {
+  const block = qs("#countdown-block");
+  if (!block) return;
+  const target = parseInt(block.getAttribute("data-target"), 10);
+  if (!target) return;
+
+  const daysEl = qs("#cd-days", block);
+  const hoursEl = qs("#cd-hours", block);
+  const minsEl = qs("#cd-mins", block);
+  const secsEl = qs("#cd-secs", block);
+
+  let timer = null;
+
+  function tick() {
+    const diff = target - Date.now();
+    if (diff <= 0) {
+      if (timer) clearInterval(timer);
+      renderReleasePage(); // re-render now that it's actually live
+      return;
+    }
+    const pad = (n) => String(n).padStart(2, "0");
+    if (daysEl) daysEl.textContent = pad(Math.floor(diff / 86400000));
+    if (hoursEl) hoursEl.textContent = pad(Math.floor((diff % 86400000) / 3600000));
+    if (minsEl) minsEl.textContent = pad(Math.floor((diff % 3600000) / 60000));
+    if (secsEl) secsEl.textContent = pad(Math.floor((diff % 60000) / 1000));
+  }
+
+  tick();
+  timer = setInterval(tick, 1000);
+}
+
 function youtubeEmbedUrl(url) {
   if (!url || typeof url !== "string") return null;
   const patterns = [
@@ -395,7 +457,7 @@ function releaseCardHtml(release) {
       <a href="release.html?id=${release.id}" class="card-thumb-link" aria-hidden="true" tabindex="-1">
         <img src="${release.thumbnail}" alt="" loading="lazy" class="card-thumb">
       </a>
-      ${isNewRelease(release) ? '<span class="badge-new">New</span>' : ""}
+      ${isComingSoon(release) ? '<span class="badge-coming-soon">Coming Soon</span>' : isNewRelease(release) ? '<span class="badge-new">New</span>' : ""}
       <div class="card-body">
         <div class="card-tags">
           <span class="tag tag-cat">${cat ? cat.shortName : release.category}</span>
@@ -434,7 +496,7 @@ function renderHomepage() {
   }
 
   if (countStat) {
-    countStat.textContent = visibleReleases().length;
+    countStat.textContent = liveReleases().length;
   }
 
   if (catMount) {
@@ -570,6 +632,7 @@ function renderReleasePage() {
 
   const cat = categoryById(release.category);
   const game = gameById(release.game);
+  const comingSoon = isComingSoon(release);
   document.title = `${release.title} — ${SITE.brand}`;
 
   const metaDesc = qs('meta[name="description"]');
@@ -587,6 +650,7 @@ function renderReleasePage() {
       </div>
       <div class="release-header-body">
         ${release.placeholder ? '<span class="badge badge-placeholder">Placeholder data — replace before launch</span>' : ""}
+        ${comingSoon ? '<span class="badge badge-coming-soon-lg">Coming Soon</span>' : ""}
         <h1>${release.title}</h1>
         <div class="card-tags">
           <span class="tag tag-game">${game.name}</span>
@@ -657,7 +721,12 @@ function renderReleasePage() {
         </section>
 
         ${
-          release.changelog && release.changelog.length
+          comingSoon
+            ? `<section class="release-section">
+                <h2>Version History</h2>
+                <p class="coming-soon-note">Version history will appear here once this release goes live.</p>
+              </section>`
+            : release.changelog && release.changelog.length
             ? `<section class="release-section">
                 <h2>Version History</h2>
                 <div class="mini-changelog">
@@ -680,7 +749,7 @@ function renderReleasePage() {
       </div>
 
       <aside class="release-aside">
-        ${downloadButtonsHtml(release.links)}
+        ${comingSoon ? countdownBlockHtml(release) : downloadButtonsHtml(release.links)}
         <div class="tag-cloud">
           ${release.tags.map((t) => `<span class="tag tag-pill">${t}</span>`).join("")}
         </div>
@@ -689,6 +758,7 @@ function renderReleasePage() {
   `;
 
   initReleaseGallery();
+  if (comingSoon) initCountdown(release);
 }
 
 /* --------------------------- all settings page --------------------------------- */
@@ -803,7 +873,7 @@ function renderChangelogPage() {
   if (!mount) return;
 
   const entries = [];
-  visibleReleases().forEach((release) => {
+  liveReleases().forEach((release) => {
     (release.changelog || []).forEach((entry) => {
       entries.push({ release, entry });
     });
