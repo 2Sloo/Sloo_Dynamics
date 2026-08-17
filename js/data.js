@@ -514,6 +514,7 @@ const RELEASES = [
     },
    // Example: images: ["assets/releaseimages/shot1.jpg", "assets/releaseimages/shot2.jpg"],
     images: ["assets/releaseimages/2Sloo Enhanced Chase Camera Settings.png"],
+      releaseAt: "2026-08-17T02:07:00Z",
     videos: {
       tutorial: "",
       showcase: "",
