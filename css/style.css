@@ -501,6 +501,21 @@ p { margin: 0 0 1em; color: var(--text-dim); }
   padding: 4px 9px;
   border-radius: 3px;
 }
+.badge-coming-soon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  background: var(--hazard);
+  color: #221200;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 9px;
+  border-radius: 3px;
+}
 .card.release-card::before,
 .card.release-card::after {
   content: "";
@@ -549,6 +564,62 @@ p { margin: 0 0 1em; color: var(--text-dim); }
   margin-bottom: 14px;
 }
 .badge-placeholder { background: rgba(255,162,61,0.12); color: var(--hazard); border: 1px solid rgba(255,162,61,0.35); }
+.badge-coming-soon-lg { background: rgba(255,162,61,0.14); color: var(--hazard); border: 1px solid rgba(255,162,61,0.4); margin-left: 8px; }
+
+.coming-soon-note { color: var(--text-faint); font-size: 14px; font-style: italic; }
+
+.countdown-block {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.countdown-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--hazard);
+  margin-bottom: 14px;
+}
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.countdown-unit {
+  background: var(--bg-alt);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 12px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.countdown-num {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.1;
+}
+.countdown-unit-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  margin-top: 4px;
+}
+.countdown-note {
+  font-size: 12px;
+  color: var(--text-faint);
+  margin: 0;
+}
 
 .empty-state {
   grid-column: 1 / -1;
