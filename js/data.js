@@ -432,7 +432,7 @@ const RELEASES = [
     featured: true,
     placeholder: false,
     thumbnail: "assets/releasethumbs/EVP_ Beamng.png",
-    shortDescription: "My first graphics pack for Beamng. 0.39 made me want to play the game more, therefor, I made a graphics pack!",
+    shortDescription: "My first graphics pack for Beamng. The 0.39 made me want to play the game more, therefore, I made a graphics pack!",
     description:
       "My first ever graphics pack for Beamng. It is a simple yet effective one consisting of a light reshade preset, in-game settings, and a TAA Mod.",
     whatsIncluded: ["In-game graphics config", "ReShade preset", "Performance-friendly variant"],
